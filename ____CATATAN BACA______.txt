@@ -1,0 +1,50 @@
+1. install lumen
+   composer create-project --prefer-dist laravel/lumen blog
+2. untuk menjalankan lumen/server api
+   php -S localhost:8000 -t public
+
+3. setting .ENV untuk database
+4. buat struktur table menggunakan php artisan migrate contoh:
+      - php artisan make:migration create_produk_table
+      - php artisan migrate
+5. create model secara manual di folder App/Namamodelnya.php tidak bisa menggunakn artisan jadi copy dari yg ada
+6. create controller secara manual di folder Http/Controller/Namacontrollermya.php tidak bisa menggunakn artisan jadi copy dari yg ada
+7. create routenya
+
+-----------------------------------------------------------------------------------------------------------
+konfigurasi agar bisa menggunakan facades & eloquent di lumen karena di lument di comment
+ - bootsrap/app.php
+ - uncomment // $app->withFacades();
+	     // $app->withEloquent();
+           // $app->register(App\Providers\AppServiceProvider::class);
+	   // $app->register(App\Providers\AuthServiceProvider::class);
+          // $app->register(App\Providers\EventServiceProvider::class);
+------------------------------------------------------------------------------------------------------------
+konfigurasi token untuk proses autentikasi enable middlware & auth masuk ke
+- bootsrap/app.php
+- uncomment  :
+		// $app->middleware([
+		//     App\Http\Middleware\ExampleMiddleware::class
+		// ]);
+
+		// $app->routeMiddleware([
+		//     'auth' => App\Http\Middleware\Authenticate::class,
+		// ]);
+
+- Providers/Auth serviceProvider.php
+- edit function boot
+
+-----------------------------------------------------------------------------------------------------------------
+contoh untuk tes POST dipostman
+{
+    "nama": "Baju Model Terbaru",
+    "harga": "50000",
+    "kondisi": "Baru",
+    "warna": "Hitam",
+    "deskripsi": "Baju keluaran terbaru sangat langka!"
+}
+
+contoh tes PUT
+{
+	"nama": "Baju tes update"
+}
